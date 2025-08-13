@@ -13,6 +13,12 @@ export function CurrencyConverter() {
     JPY: 140
   };
 
+  const convertAmount = (amount) => {
+    let result = (amount / rates[baseCurrency]) * rates[targetCurrency];
+    result = result.toFixed(2);
+    setConverted(result);
+  }
+
 
   return(
 
@@ -39,7 +45,9 @@ export function CurrencyConverter() {
     <option value="GBP">GBP</option>
     <option value="JPY">JPY</option>
     </select>
-
+     
+    <p>Converted Amount:</p>
     </>
+  
   )
 }

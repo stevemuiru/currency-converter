@@ -29,8 +29,13 @@ export function CurrencyConverter() {
     onChange = {(e) => setAmount(e.target.value)}
     
      />
+  
     <select value ={baseCurrency} 
-     onChange = {(e) => setBaseCurrency(e.target.value)}>
+     onChange = {(e) => {
+     const newBaseCurrency = e.target.value
+     setBaseCurrency(newBaseCurrency)
+     convertAmount(newAmount, newBaseCurrency, targetCurrency)}} 
+     >
 
     <option value="USD">USD</option>
     <option value="EUR">EUR</option>
@@ -39,14 +44,16 @@ export function CurrencyConverter() {
     </select>
 
     <select value={targetCurrency} 
-     onChange = {(e) => setTargetCurrency(e.target.value)}>
+     onChange = {(e) => setTargetCurrency(e.target.value)}
+    >
     <option value="USD">USD</option>
     <option value="EUR">EUR</option>
     <option value="GBP">GBP</option>
     <option value="JPY">JPY</option>
     </select>
      
-    <p>Converted Amount:</p>
+    <p>Converted Amount: {converted} {targetCurrency}</p>
+
     </>
   
   )
